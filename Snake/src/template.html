@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Snake</title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #202020;
+
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+        }
+
+        .score {
+            position: absolute;
+        }
+
+        .score p {
+            text-align: center;
+            color: #ffffff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .score span {
+            font-weight: normal;
+        }
+    </style>
+    <div class="field"></div>
+    <div class="score"></div>
+    <%= htmlWebpackPlugin.tags.bodyTags %>
+    <script>
+        const map = document.querySelector('.field');
+        const score = document.querySelector('.score');
+        const Snake = new Game({
+            mapElem: map,
+            scoreElem: score,
+            render: 'canvas'
+        });
+        Snake.init();
+    </script>
+</body>
+
+</html>

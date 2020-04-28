@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href=""><title>Tetris</title></head><body><style>@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #202020;
+
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: flex-start;
+        }</style><div class="field"></div><div class="table"></div><script src="tetris.js"></script><script>const tetris = new Game({
+            elem: document.querySelector('.field'),
+            elemTable: document.querySelector('.table'),
+            render: 'canvas'
+        });
+        tetris.init();</script></body></html>
