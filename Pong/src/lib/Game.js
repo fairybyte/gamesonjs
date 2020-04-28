@@ -2,44 +2,42 @@ import { CanvasRender } from './CanvasRender.js';
 import { DOMRender } from './DOMRender.js';
 
 export class Game {
-
-  inputMap = [];
-
-  ball = {
-    x: 0,
-    y: 0,
-    r: 5,
-    color: 'white',
-    vx: 3,
-    vy: 0,
-    maxV: 3
-  };
-
-  players = {
-    0: {
-      x: 0,
-      y: 150,
-      color: 'white',
-      score: 0,
-      direction: 'none'
-    },
-    1: {
-      x: 0,
-      y: 150,
-      color: 'white',
-      score: 0,
-      direction: 'none'
-    },
-    speed: 10,
-    height: 100,
-    width: 10
-  }
-
   constructor({ element, width, height, render }) {
     const params = { element, width, height }
     this.width = width;
     this.height = height;
     this.renderMethod = (render === 'canvas') ? new CanvasRender(params) : new DOMRender(params);
+
+    this.inputMap = [];
+    this.ball = {
+      x: 0,
+      y: 0,
+      r: 5,
+      color: 'white',
+      vx: 3,
+      vy: 0,
+      maxV: 3
+    };
+  
+    this.players = {
+      0: {
+        x: 0,
+        y: 150,
+        color: 'white',
+        score: 0,
+        direction: 'none'
+      },
+      1: {
+        x: 0,
+        y: 150,
+        color: 'white',
+        score: 0,
+        direction: 'none'
+      },
+      speed: 10,
+      height: 100,
+      width: 10
+    }
   }
 
   input() {

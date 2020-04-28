@@ -1,43 +1,21 @@
-import { DOMRender } from './DOMRender.js';
-import { CanvasRender } from './CanvasRender.js';
+import {
+  DOMRender
+} from './DOMRender.js';
+import {
+  CanvasRender
+} from './CanvasRender.js';
 
-let requestAnimationFrame = window.requestAnimationFrame
-  || window.mozRequestAnimationFrame
-  || window.webkitRequestAnimationFrame
-  || window.msRequestAnimationFrame;
+let requestAnimationFrame = window.requestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.msRequestAnimationFrame;
 
 export class Game {
-
-  config = {
-    fps: 60,
-    slow: 1
-  }
-
-  time = {
-    now: 0,
-    last: window.performance.now(),
-    dt: 0
-  }
-
-  inputMap = [];
-
-  snake = {
-    color: '#a7a7a7',
-    x: 0,
-    y: 0,
-    len: 3,
-    direction: 'right'
-  }
-
-  fruit = {
-    color: '#fff',
-    x: 0,
-    y: 0
-  }
-
-  score = 0;
-
-  constructor({ mapElem, scoreElem, render }) {
+  constructor({
+    mapElem,
+    scoreElem,
+    render
+  }) {
 
     this.map = {
       width: 40,
@@ -60,7 +38,36 @@ export class Game {
     } else if (render.toLowerCase() == 'canvas') {
       this.renderMethod = new CanvasRender(this.params);
     }
-  
+
+
+    this.config = {
+      fps: 60,
+      slow: 1
+    }
+
+    this.time = {
+      now: 0,
+      last: window.performance.now(),
+      dt: 0
+    }
+
+    this.inputMap = [];
+
+    this.snake = {
+      color: '#a7a7a7',
+      x: 0,
+      y: 0,
+      len: 3,
+      direction: 'right'
+    }
+
+    this.fruit = {
+      color: '#fff',
+      x: 0,
+      y: 0
+    }
+
+    this.score = 0;
   }
 
   input() {
@@ -218,10 +225,18 @@ export class Game {
 
   snakeMove() {
     switch (this.snake.direction) {
-      case 'left': this.snake.x--; break;
-      case 'right': this.snake.x++; break;
-      case 'up': this.snake.y--; break;
-      case 'down': this.snake.y++; break;
+      case 'left':
+        this.snake.x--;
+        break;
+      case 'right':
+        this.snake.x++;
+        break;
+      case 'up':
+        this.snake.y--;
+        break;
+      case 'down':
+        this.snake.y++;
+        break;
     }
   }
 }

@@ -1,11 +1,12 @@
 export class DOMRender {
-  renderField = [];
+  
   constructor({ element, elementTable, width, height, cell }) {
     this.element = element;
     this.tableElem = elementTable;
     this.cell = cell;
     this.width = width;
     this.height = height;
+    this.renderField = [];
     this._createMapDOM();
     this._createDOMTable();
   }

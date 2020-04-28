@@ -3,80 +3,14 @@ import { CanvasRender } from './CanvasRender.js';
 
 
 export class Game {
-  config = {
-    fps: 60,
-    slow: 20
-  };
-
-  time = {
-    now: 0,
-    last: window.performance.now(),
-    dt: 0
-  };
-
-  gameStats = {
-    level: 0,
-    score: 0,
-    lines: 0,
-    higherPiece: 20,
-    point: {
-      '1': 40,
-      '2': 100,
-      '3': 300,
-      '4': 1200
-    }
-  };
-
-  fieldOptions = {
-    w: 10,
-    h: 20
-  }
-
-  playfield = [];
-  emptyLine = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  pieces = {
-    I: [
-      [1],
-      [1],
-      [1],
-      [1]
-    ],
-    J: [
-      [0, 2],
-      [0, 2],
-      [2, 2]
-    ],
-    L: [
-      [3, 0],
-      [3, 0],
-      [3, 3]
-    ],
-    O: [
-      [4, 4],
-      [4, 4]
-    ],
-    T: [
-      [0, 5, 0],
-      [5, 5, 5]
-    ],
-    Z: [
-      [6, 6, 0],
-      [0, 6, 6]
-    ],
-    S: [
-      [0, 7, 7],
-      [7, 7, 0]
-    ]
-  }
-
-  currentPiece = {
-    x: 0,
-    y: 0,
-    color: '',
-    map: []
-  }
-
+  
   constructor({ elem = null, elemTable = null, render = 'canvas', cell = { w: 25, h: 25, border: 2 } }) {
+    
+    this.fieldOptions = {
+      w: 10,
+      h: 20
+    }
+    
     this.params = {
       element: elem,
       elementTable: elemTable,
@@ -90,6 +24,76 @@ export class Game {
     } else if (render.toLowerCase() == 'canvas') {
       this.renderMethod = new CanvasRender(this.params);
     }
+
+
+    this.config = {
+      fps: 60,
+      slow: 20
+    };
+  
+    this.time = {
+      now: 0,
+      last: window.performance.now(),
+      dt: 0
+    };
+  
+    this.gameStats = {
+      level: 0,
+      score: 0,
+      lines: 0,
+      higherPiece: 20,
+      point: {
+        '1': 40,
+        '2': 100,
+        '3': 300,
+        '4': 1200
+      }
+    };
+  
+    this.playfield = [];
+    this.emptyLine = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.pieces = {
+      I: [
+        [1],
+        [1],
+        [1],
+        [1]
+      ],
+      J: [
+        [0, 2],
+        [0, 2],
+        [2, 2]
+      ],
+      L: [
+        [3, 0],
+        [3, 0],
+        [3, 3]
+      ],
+      O: [
+        [4, 4],
+        [4, 4]
+      ],
+      T: [
+        [0, 5, 0],
+        [5, 5, 5]
+      ],
+      Z: [
+        [6, 6, 0],
+        [0, 6, 6]
+      ],
+      S: [
+        [0, 7, 7],
+        [7, 7, 0]
+      ]
+    }
+  
+    this.currentPiece = {
+      x: 0,
+      y: 0,
+      color: '',
+      map: []
+    }
+
   }
 
   input() {
